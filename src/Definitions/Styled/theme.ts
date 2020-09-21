@@ -4,7 +4,14 @@ import { DefaultTheme } from "styled-components";
 
 const theme: DefaultTheme = {
     colors: {
-        primary: "#2c3e50",
+        primary: "#1E88E5",
+        accent: "#424242",
+    },
+    padding: {
+        xLarge: "48px",
+        large: "32px",
+        medium: "16px",
+        small: "8px",
     },
 };
 
