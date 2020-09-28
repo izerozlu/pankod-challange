@@ -10,25 +10,15 @@ declare namespace IHomePage {
     }
 
     export interface IStateProps {
-        home: {
-            version: number;
-        };
-        image: {
-            url: string;
-        };
+        navigatedTo: string;
     }
 
     namespace Actions {
-        export interface IMapPayload {}
-
-        export interface IMapResponse {}
-
-        export interface IGetApodPayload extends PlanetaryModel.GetApodPayload {
-            params: {};
+        export interface IMapPayload {
+            navigatedTo: string;
         }
 
-        export interface IGetApodResponse
-            extends PlanetaryModel.GetApodResponse {}
+        export interface IMapResponse {}
     }
 }
 
