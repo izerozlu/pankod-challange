@@ -5,7 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 // #endregion Global Imports
 // #region Local Imports
 import { withTranslation } from "@Server/i18n";
-import { Container } from "@Styled/Home";
+import {
+    Container,
+    Content,
+    Header,
+    NavigationEntry,
+    NavigationEntryContent,
+    NavigationEntryHeader,
+    NavigationList,
+    Subheader,
+} from "@Styled/Home";
 import { IStore } from "@Redux/IStore";
 import { HomeActions } from "@Actions";
 import { Footer, NavBar } from "@Components";
@@ -21,9 +30,24 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = ({
     const home = useSelector((state: IStore) => state.home);
     const dispatch = useDispatch();
 
+    const renderNavigationEntries = (): JSX.Element[] => {
+        return ["series", "movies"].map((title: string) => (
+            <NavigationEntry>
+                <NavigationEntryHeader>{title}</NavigationEntryHeader>
+                <NavigationEntryContent>Popular {title}</NavigationEntryContent>
+            </NavigationEntry>
+        ));
+    };
+
     return (
         <Container>
             <NavBar />
+            <Content>
+                <Header>
+                    <Subheader>Popular Titles</Subheader>
+                </Header>
+                <NavigationList>{renderNavigationEntries()}</NavigationList>
+            </Content>
             <Footer />
         </Container>
     );
