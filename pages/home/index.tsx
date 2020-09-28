@@ -9,10 +9,12 @@ import {
     Container,
     Content,
     Header,
+    HeaderInnerContainer,
     NavigationEntry,
     NavigationEntryContent,
     NavigationEntryHeader,
     NavigationList,
+    NavigationListContainer,
     Subheader,
 } from "@Styled/Home";
 import { IStore } from "@Redux/IStore";
@@ -20,7 +22,8 @@ import { HomeActions } from "@Actions";
 import { Footer, NavBar } from "@Components";
 // #endregion Local Imports
 // #region Interface Imports
-import { IHomePage, ReduxNextPageContext } from "@Interfaces";
+import { IHomePage } from "@Interfaces";
+import Link from "next/link";
 // #endregion Interface Imports
 
 const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = ({
@@ -30,12 +33,20 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = ({
     const home = useSelector((state: IStore) => state.home);
     const dispatch = useDispatch();
 
+    const dispatchNavigationClick = (title: string): void => {
+        dispatch(HomeActions.Navigate(title));
+    };
+
     const renderNavigationEntries = (): JSX.Element[] => {
         return ["series", "movies"].map((title: string) => (
-            <NavigationEntry>
-                <NavigationEntryHeader>{title}</NavigationEntryHeader>
-                <NavigationEntryContent>Popular {title}</NavigationEntryContent>
-            </NavigationEntry>
+            <Link href={`/${title}`} key={title}>
+                <NavigationEntry onClick={() => dispatchNavigationClick(title)}>
+                    <NavigationEntryHeader>{title}</NavigationEntryHeader>
+                    <NavigationEntryContent>
+                        Popular {title}
+                    </NavigationEntryContent>
+                </NavigationEntry>
+            </Link>
         ));
     };
 
@@ -44,24 +55,17 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = ({
             <NavBar />
             <Content>
                 <Header>
-                    <Subheader>Popular Titles</Subheader>
+                    <HeaderInnerContainer>
+                        <Subheader>Popular Titles</Subheader>
+                    </HeaderInnerContainer>
                 </Header>
-                <NavigationList>{renderNavigationEntries()}</NavigationList>
+                <NavigationListContainer>
+                    <NavigationList>{renderNavigationEntries()}</NavigationList>
+                </NavigationListContainer>
             </Content>
             <Footer />
         </Container>
     );
-};
-
-Home.getInitialProps = async (
-    ctx: ReduxNextPageContext
-): Promise<IHomePage.InitialProps> => {
-    await ctx.store.dispatch(
-        HomeActions.GetApod({
-            params: { hd: true },
-        })
-    );
-    return { namespacesRequired: ["common"] };
 };
 
 const Extended = withTranslation("common")(Home);

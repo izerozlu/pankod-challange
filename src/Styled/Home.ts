@@ -12,29 +12,42 @@ export const Container = styled.div`
 export const Content = styled.main`
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex-basis: 100%;
-    max-width: 1280px;
     width: 100%;
     margin: 0 auto;
 `;
 
 export const Header = styled.header`
     display: flex;
+    justify-content: center;
+    padding: 8px 16px;
     background-color: #424242;
     width: 100vw;
-    margin-left: calc(-50vw + 640px);
-    padding: 8px calc(50vw - 640px);
     box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14),
         0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+`;
+
+export const HeaderInnerContainer = styled.div`
+    max-width: 1280px;
+    width: 100%;
 `;
 
 export const Subheader = styled.h2`
     color: white;
 `;
 
-export const NavigationList = styled.ul`
-    padding: 32px 0;
+export const NavigationListContainer = styled.div`
+    max-width: 1312px;
+    width: 100%;
     display: flex;
+    padding: 32px 16px;
+`;
+
+export const NavigationList = styled.ul`
+    display: flex;
+    width: 100%;
+    padding: 0;
 `;
 
 export const NavigationEntry = styled.li`
