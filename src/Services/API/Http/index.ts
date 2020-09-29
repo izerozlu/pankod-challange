@@ -2,7 +2,6 @@
 import "isomorphic-unfetch";
 import { stringify } from "query-string";
 // #endregion Global Imports
-
 // #region Interface Imports
 import { HttpModel } from "@Interfaces";
 // #endregion Interface Imports

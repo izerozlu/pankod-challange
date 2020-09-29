@@ -5,5 +5,6 @@ const nextRoutes = require("next-routes");
 const routes = (module.exports = nextRoutes());
 
 routes.add("home", "/");
+routes.add("/series", "/series/index");
 
 export default routes;

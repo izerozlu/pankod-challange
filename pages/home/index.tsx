@@ -1,46 +1,29 @@
-// #region Global Imports
 import * as React from "react";
 import { NextPage } from "next";
-import { useDispatch, useSelector } from "react-redux";
-// #endregion Global Imports
-// #region Local Imports
 import { withTranslation } from "@Server/i18n";
 import {
     Container,
-    Content,
-    Header,
-    HeaderInnerContainer,
     NavigationEntry,
     NavigationEntryContent,
     NavigationEntryHeader,
     NavigationList,
     NavigationListContainer,
-    Subheader,
 } from "@Styled/Home";
-import { IStore } from "@Redux/IStore";
-import { HomeActions } from "@Actions";
 import { Footer, NavBar } from "@Components";
-// #endregion Local Imports
-// #region Interface Imports
 import { IHomePage } from "@Interfaces";
 import Link from "next/link";
-// #endregion Interface Imports
+import {
+    Content,
+    Header,
+    HeaderInnerContainer,
+    Subheader,
+} from "@Styled/Shared";
 
-const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = ({
-    t,
-    i18n,
-}) => {
-    const home = useSelector((state: IStore) => state.home);
-    const dispatch = useDispatch();
-
-    const dispatchNavigationClick = (title: string): void => {
-        dispatch(HomeActions.Navigate(title));
-    };
-
+const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = () => {
     const renderNavigationEntries = (): JSX.Element[] => {
         return ["series", "movies"].map((title: string) => (
             <Link href={`/${title}`} key={title}>
-                <NavigationEntry onClick={() => dispatchNavigationClick(title)}>
+                <NavigationEntry>
                     <NavigationEntryHeader>{title}</NavigationEntryHeader>
                     <NavigationEntryContent>
                         Popular {title}

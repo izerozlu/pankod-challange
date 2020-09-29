@@ -1,11 +1,8 @@
-// #region Global Imports
 import { combineReducers } from "redux";
-// #endregion Global Imports
-
-// #region Local Imports
-import { HomeReducer } from "./home";
-// #endregion Local Imports
+import { FeedShowcaseReducer } from "@Reducers/feedShowcase";
+import { SeriesReducer } from "./series";
 
 export default combineReducers({
-    home: HomeReducer,
+    FeedShowcase: FeedShowcaseReducer,
+    series: SeriesReducer,
 });

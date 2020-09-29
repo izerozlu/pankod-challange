@@ -3,8 +3,8 @@ import next from "next";
 import express from "express";
 import path from "path";
 import nextI18NextMiddleware from "next-i18next/middleware";
+import fs from "fs";
 // #endregion Global Imports
-
 // #region Local Imports
 import nextI18next from "./i18n";
 import routes from "./routes";
@@ -30,6 +30,12 @@ app.prepare().then(() => {
             server.use(proxyMiddleware(context, devProxy[context]));
         });
     }
+
+    server.get("/feed", async (request, response) => {
+        const filePath = path.join(__dirname, "./data/sample.json");
+        const file = fs.readFileSync(filePath, { encoding: "utf8" });
+        response.send(JSON.parse(file));
+    });
 
     server.all("*", (req, res) => handler(req, res));
 

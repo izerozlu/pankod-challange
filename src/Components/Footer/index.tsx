@@ -7,10 +7,10 @@ import {
     Image,
     InnerContainer,
     LinkContainer,
+    Links,
     MapAnchor,
     MapItem,
     SiteMap,
-    Links,
     Statement,
 } from "@Components/Footer/styled";
 import { IFooter } from "./Footer";
