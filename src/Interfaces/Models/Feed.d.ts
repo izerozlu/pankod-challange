@@ -1,7 +1,3 @@
-// #region Global Imports
-
-// #endregion Global Imports
-
 export interface FeedResponse {
     total: number;
     entries: Feed[];

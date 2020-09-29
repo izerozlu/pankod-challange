@@ -18,11 +18,16 @@ export const SeriesReducer = (
     action: IAction<IMapPayload>
 ) => {
     switch (action.type) {
-        case ActionConsts.Series.AssignFeed:
+        case ActionConsts.Series.AssignFeedList:
             return {
                 ...state,
                 ...action.payload,
                 feedFetched: true,
+            };
+        case ActionConsts.Series.AssignFilteredFeedList:
+            return {
+                ...state,
+                filteredFeedList: action.payload,
             };
 
         case ActionConsts.Series.SetError:

@@ -4,8 +4,12 @@ import { Feed } from "@Interfaces";
 // #endregion Local Imports
 
 export const SeriesActions = {
-    AssignFeed: (feedList: Feed[]) => ({
-        type: ActionConsts.Series.AssignFeed,
+    AssignFeedList: (feedList: Feed[]) => ({
+        type: ActionConsts.Series.AssignFeedList,
+        payload: { feedList },
+    }),
+    AssignFilteredFeedList: (feedList: Feed[]) => ({
+        type: ActionConsts.Series.AssignFilteredFeedList,
         payload: { feedList },
     }),
     SetError: () => ({

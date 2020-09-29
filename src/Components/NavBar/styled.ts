@@ -1,6 +1,7 @@
 // #region Global Imports
 import styled from "styled-components";
 import { TextButton } from "@Components";
+import { InnerContainer } from "@Styled/Shared";
 // #endregion Global Imports
 
 export const Container = styled.nav`
@@ -15,9 +16,8 @@ export const Container = styled.nav`
     z-index: 300;
 `;
 
-export const InnerContainer = styled.div`
-    max-width: 1280px;
-    width: 100%;
+// @ts-ignore
+export const NavBarInnerContainer = styled(InnerContainer)`
     display: flex;
     justify-content: space-between;
     align-items: center;

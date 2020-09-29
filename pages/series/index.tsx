@@ -3,18 +3,14 @@ import React, { useEffect } from "react";
 import { NextPage, NextPageContext } from "next";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "@Styled/Series";
-import { Feed, ISeries } from "@Interfaces";
+import { Feed, FeedResponse, ISeries } from "@Interfaces";
 import { IStore } from "@Redux/IStore";
 import { SeriesActions } from "@Actions";
 import { Dispatch } from "redux";
-import { Footer, NavBar } from "@Components";
-import {
-    Content,
-    Header,
-    HeaderInnerContainer,
-    Subheader,
-} from "@Styled/Shared";
+import { FeedShowcase, Footer, NavBar } from "@Components";
+import { Content, Header, InnerContainer, Subheader } from "@Styled/Shared";
 import { COULD_NOT_RETRIEVE_FEED } from "../../src/Constants/Errors";
+import { SERIES } from "../../src/Constants/ProgramTypes";
 
 const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
     const series = useSelector((state: IStore) => state.series);
@@ -24,9 +20,11 @@ const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
         const { feedList } = series;
 
         const filteredFeedList = feedList.filter((feed: Feed) => {
-            return feed.releaseYear > 2010;
+            return feed.releaseYear > 2010 && feed.programType === SERIES;
         });
-        dispatch(SeriesActions.AssignFeed(filteredFeedList.slice(0, 21)));
+        dispatch(
+            SeriesActions.AssignFilteredFeedList(filteredFeedList.slice(0, 21))
+        );
     };
 
     useEffect(() => {
@@ -45,10 +43,11 @@ const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
             <NavBar />
             <Content>
                 <Header>
-                    <HeaderInnerContainer>
+                    <InnerContainer>
                         <Subheader>Popular Series</Subheader>
-                    </HeaderInnerContainer>
+                    </InnerContainer>
                 </Header>
+                <FeedShowcase feedList={series.filteredFeedList} />
             </Content>
             <Footer />
         </Container>
@@ -66,13 +65,15 @@ Series.getInitialProps = async ({
 const fetchFeed = async (dispatch: Dispatch) => {
     // TODO: use HTTP service for this.
     try {
-        const result = await fetch("/feed").then((response: Response) => {
-            if (response.status === 200) {
-                return response.json();
+        const result: FeedResponse = await fetch("/feed").then(
+            (response: Response) => {
+                if (response.status === 200) {
+                    return response.json();
+                }
+                throw new Error(COULD_NOT_RETRIEVE_FEED);
             }
-            throw new Error(COULD_NOT_RETRIEVE_FEED);
-        });
-        dispatch(SeriesActions.AssignFeed(result.entries));
+        );
+        dispatch(SeriesActions.AssignFeedList(result.entries));
     } catch (e) {
         dispatch(SeriesActions.SetError());
     }

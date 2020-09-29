@@ -15,11 +15,6 @@ export const Container = styled.footer`
     }
 `;
 
-export const InnerContainer = styled.div`
-    max-width: 1280px;
-    width: 100%;
-`;
-
 export const SiteMap = styled.ul`
     background: ${({ theme }) => theme.colors.accent};
     display: flex;

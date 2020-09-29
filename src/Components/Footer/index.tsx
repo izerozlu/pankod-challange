@@ -1,11 +1,7 @@
-// #region Global Imports
 import * as React from "react";
-// #endregion Global Imports
-// #region Local Imports
 import {
     Container,
     Image,
-    InnerContainer,
     LinkContainer,
     Links,
     MapAnchor,
@@ -13,8 +9,8 @@ import {
     SiteMap,
     Statement,
 } from "@Components/Footer/styled";
+import { InnerContainer } from "@Styled/Shared";
 import { IFooter } from "./Footer";
-// #endregion Local Imports
 
 const Footer: React.FunctionComponent<IFooter.IProps> = (): JSX.Element => {
     const renderMapItems = (): JSX.Element[] => {

@@ -12,12 +12,7 @@ import {
 import { Footer, NavBar } from "@Components";
 import { IHomePage } from "@Interfaces";
 import Link from "next/link";
-import {
-    Content,
-    Header,
-    HeaderInnerContainer,
-    Subheader,
-} from "@Styled/Shared";
+import { Content, Header, InnerContainer, Subheader } from "@Styled/Shared";
 
 const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = () => {
     const renderNavigationEntries = (): JSX.Element[] => {
@@ -38,9 +33,9 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = () => {
             <NavBar />
             <Content>
                 <Header>
-                    <HeaderInnerContainer>
+                    <InnerContainer>
                         <Subheader>Popular Titles</Subheader>
-                    </HeaderInnerContainer>
+                    </InnerContainer>
                 </Header>
                 <NavigationListContainer>
                     <NavigationList>{renderNavigationEntries()}</NavigationList>

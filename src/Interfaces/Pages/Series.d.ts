@@ -10,6 +10,7 @@ export declare module ISeries {
 
     export interface IStateProps {
         feedList: Feed[];
+        filteredFeedList: Feed[];
         feedFetched: boolean;
         hasError: boolean;
     }
