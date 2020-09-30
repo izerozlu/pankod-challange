@@ -9,7 +9,7 @@ export const SeriesActions = {
         type: ActionConsts.Series.AssignFeedList,
         payload: { feedList },
     }),
-    AssignFilteredFeedList: (feedList: Feed[]) => ({
+    AssignFilteredFeedList: (filteredFeedList: Feed[]) => ({
         type: ActionConsts.Series.AssignFilteredFeedList,
         payload: { filteredFeedList },
     }),
