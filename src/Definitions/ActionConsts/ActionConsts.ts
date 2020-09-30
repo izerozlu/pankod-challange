@@ -5,6 +5,7 @@ export const ActionConsts = {
 
     Series: {
         SetError: "Series_SetError",
+        AssignQuery: "Series_AssignQuery",
         AssignFeedList: "Series_AssignFeedList",
         AssignFilteredFeedList: "Series_AssignFilteredFeedList",
         AssignSortType: "Series_AssignSortType",

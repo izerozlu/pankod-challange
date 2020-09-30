@@ -7,7 +7,13 @@ import { Feed, FeedResponse, ISeries } from "@Interfaces";
 import { IStore } from "@Redux/IStore";
 import { SeriesActions } from "@Actions";
 import { Dispatch } from "redux";
-import { FeedShowcase, Footer, NavBar, SortTypeSelector } from "@Components";
+import {
+    FeedSearch,
+    FeedShowcase,
+    Footer,
+    NavBar,
+    SortTypeSelector,
+} from "@Components";
 import { Content, Header, InnerContainer, Subheader } from "@Styled/Shared";
 import { COULD_NOT_RETRIEVE_FEED } from "../../src/Constants/Errors";
 import { SERIES } from "../../src/Constants/ProgramTypes";
@@ -18,8 +24,15 @@ const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
     const dispatch = useDispatch();
 
     const filterFeed = (feedList: Feed[]): Feed[] => {
+        const { query } = series;
+        const queryTestRegExp = new RegExp(query, "i");
+
         const filteredFeedList = feedList.filter((feed: Feed) => {
-            return feed.releaseYear > 2010 && feed.programType === SERIES;
+            return (
+                feed.releaseYear > 2010 &&
+                feed.programType === SERIES &&
+                (query ? queryTestRegExp.test(feed.title) : true)
+            );
         });
 
         return filteredFeedList.slice(0, 21);
@@ -103,7 +116,8 @@ const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
                         <Subheader>Popular Series</Subheader>
                     </InnerContainer>
                 </Header>
-                <InnerContainer className="sort-type-selector-container">
+                <InnerContainer className="series-filters">
+                    <FeedSearch />
                     <SortTypeSelector />
                 </InnerContainer>
                 <FeedShowcase />

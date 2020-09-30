@@ -17,6 +17,10 @@ export const SeriesActions = {
         type: ActionConsts.Series.AssignSortType,
         payload: { sortType },
     }),
+    AssignQuery: (query: string) => ({
+        type: ActionConsts.Series.AssignQuery,
+        payload: { query },
+    }),
     SetError: () => ({
         type: ActionConsts.Series.SetError,
     }),

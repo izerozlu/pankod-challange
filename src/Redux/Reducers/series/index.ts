@@ -12,6 +12,7 @@ const INITIAL_STATE: ISeries.IStateProps = {
     feedFetched: false,
     feedNeedsProcessing: false,
     sortType: "title_asc",
+    query: "",
 };
 
 type IMapPayload = ISeries.Actions.IMapPayload;
@@ -41,6 +42,12 @@ export const SeriesReducer = (
                 hasError: true,
             };
         case ActionConsts.Series.AssignSortType:
+            return {
+                ...state,
+                ...action.payload,
+                feedNeedsProcessing: true,
+            };
+        case ActionConsts.Series.AssignQuery:
             return {
                 ...state,
                 ...action.payload,

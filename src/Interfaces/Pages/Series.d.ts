@@ -16,6 +16,7 @@ export declare module ISeries {
         feedNeedsProcessing: boolean;
         feedFetched: boolean;
         hasError: boolean;
+        query: string;
     }
 
     module Actions {
