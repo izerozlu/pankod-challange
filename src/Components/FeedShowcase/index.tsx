@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FeedShowcaseActions } from "@Actions";
 import { IStore } from "@Redux/IStore";
-import { IFeedShowcase } from "@Components/FeedShowcase/SeriesShowcase";
+import { IFeedShowcase } from "@Components/FeedShowcase/FeedShowcase";
 import { Feed } from "@Interfaces";
 import { InnerContainer } from "@Styled/Shared";
 import {
@@ -13,20 +12,14 @@ import {
     ShowcaseTitle,
 } from "./styled";
 
-export const FeedShowcase: React.FunctionComponent<IFeedShowcase.IProps> = ({
-    feedList,
-}: IFeedShowcase.IProps) => {
-    const feedShowcase = useSelector((state: IStore) => state.FeedShowcase);
+export const FeedShowcase: React.FunctionComponent<IFeedShowcase.IProps> = () => {
+    const series = useSelector((state: IStore) => state.series);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(FeedShowcaseActions.AssignFeedList(feedList));
-    });
-
     const renderShowcases = (): JSX.Element[] => {
-        return feedShowcase.feedList.map((feed: Feed) => {
+        return series.filteredFeedList?.map((feed: Feed) => {
             return (
-                <Showcase>
+                <Showcase key={feed.title}>
                     <PosterImage
                         src={feed.images["Poster Art"].url}
                         loading="lazy"

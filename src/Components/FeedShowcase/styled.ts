@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 32px 0;
+    margin: 16px 0;
 `;
 
 export const ShowcaseList = styled.ul`
