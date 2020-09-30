@@ -22,7 +22,3 @@ export const Selector = styled.select`
         outline: none;
     }
 `;
-
-export const SelectorOption = styled.option`
-    padding: 16px;
-`;
