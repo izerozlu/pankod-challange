@@ -7,5 +7,6 @@ export const ActionConsts = {
         SetError: "Series_SetError",
         AssignFeedList: "Series_AssignFeedList",
         AssignFilteredFeedList: "Series_AssignFilteredFeedList",
+        AssignSortType: "Series_AssignSortType",
     },
 };

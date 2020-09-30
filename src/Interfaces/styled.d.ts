@@ -14,5 +14,9 @@ declare module "styled-components" {
             medium: string;
             small: string;
         };
+        boxShadows: {
+            low: string;
+            medium: string;
+        };
     }
 }

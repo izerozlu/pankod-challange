@@ -47,7 +47,10 @@ const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
                         <Subheader>Popular Series</Subheader>
                     </InnerContainer>
                 </Header>
-                <FeedShowcase feedList={series.filteredFeedList} />
+                <InnerContainer className="sort-type-selector-container">
+                    <SortTypeSelector />
+                </InnerContainer>
+                <FeedShowcase />
             </Content>
             <Footer />
         </Container>
