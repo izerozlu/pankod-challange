@@ -12,11 +12,17 @@ export const SortTypeSelector: React.FunctionComponent<ISortTypeSelector.IProps>
     const feedDisplay = useSelector((state: IStore) => state.feedDisplay);
     const dispatch = useDispatch();
 
+    /**
+     * Options to initialize the <code>Selector</code> with.
+     */
     const defaultOption: SortSelectOption = {
         label: "Title | Ascending",
         value: feedDisplay.sortType,
     };
 
+    /**
+     * Possible options to choose from in the <code>Select</code>.
+     */
     const selectOptions: SortSelectOption[] = [
         {
             label: "Title | Ascending",
@@ -36,7 +42,11 @@ export const SortTypeSelector: React.FunctionComponent<ISortTypeSelector.IProps>
         },
     ];
 
-    const handleChange = (changeEvent?: ValueType<SortSelectOption>) => {
+    /**
+     * Notifies the <i>FeedDisplay</i> store about the sorting type user chose.
+     * @param changeEvent Event which encapsulates the user's choice.
+     */
+    const notifyChange = (changeEvent?: ValueType<SortSelectOption>) => {
         if (changeEvent) {
             // @ts-ignore
             dispatch(FeedDisplayActions.AssignSortType(changeEvent.value));
@@ -48,7 +58,7 @@ export const SortTypeSelector: React.FunctionComponent<ISortTypeSelector.IProps>
             <Select
                 className="sort-type-selector__select"
                 options={selectOptions}
-                onChange={handleChange}
+                onChange={notifyChange}
                 defaultValue={defaultOption}
             />
             <AiFillCaretDown className="sort-type-selector__suffix-icon" />

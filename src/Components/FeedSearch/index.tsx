@@ -12,7 +12,7 @@ export const FeedSearch: React.FunctionComponent<IFeedSearch.IProps> = () => {
      * Notifies the <i>FeedDisplay</i> store about the user-entered query.
      * @param event Input event to extract the query value from.
      */
-    const handleInput = (event: FormEvent<HTMLInputElement>) => {
+    const notifyInput = (event: FormEvent<HTMLInputElement>) => {
         // @ts-ignore
         const { value } = event.target;
         dispatch(
@@ -22,7 +22,7 @@ export const FeedSearch: React.FunctionComponent<IFeedSearch.IProps> = () => {
 
     return (
         <Container>
-            <SearchInput placeholder="Search" onInput={handleInput} />
+            <SearchInput placeholder="Search" onInput={notifyInput} />
             <SearchButton className="feed-search__button">
                 <AiOutlineSearch className="feed-search__button-icon" />
             </SearchButton>
