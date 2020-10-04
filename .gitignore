@@ -160,3 +160,8 @@ documentation/website/build
 
 # IDE and Text Editors
 .idea
+
+# Template folders
+documentation
+.storybook
+.github

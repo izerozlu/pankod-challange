@@ -1,14 +1,8 @@
-// #region Global Imports
 import next from "next";
 import express from "express";
 import path from "path";
-import nextI18NextMiddleware from "next-i18next/middleware";
 import fs from "fs";
-// #endregion Global Imports
-// #region Local Imports
-import nextI18next from "./i18n";
 import routes from "./routes";
-// #endregion Local Imports
 
 const port = parseInt(process.env.PORT || "3000", 10);
 const dev = process.env.NODE_ENV !== "production";
@@ -20,7 +14,6 @@ app.prepare().then(() => {
 
     app.setAssetPrefix(process.env.STATIC_PATH);
     server.use(express.static(path.join(__dirname, "../public/static")));
-    server.use(nextI18NextMiddleware(nextI18next));
 
     server.get("/api/feed", async (request, response) => {
         const filePath = path.join(__dirname, "./data/sample.json");

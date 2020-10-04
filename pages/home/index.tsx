@@ -1,6 +1,5 @@
 import * as React from "react";
 import { NextPage } from "next";
-import { withTranslation } from "@Server/i18n";
 import {
     Container,
     NavigationEntry,
@@ -46,6 +45,4 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = () => {
     );
 };
 
-const Extended = withTranslation("common")(Home);
-
-export default Extended;
+export default Home;
