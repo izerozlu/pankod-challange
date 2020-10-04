@@ -12,8 +12,11 @@ export const NavBar: React.FunctionComponent<INavBar.IProps> = () => {
                 <Link href="/">
                     <Title>DEMO Streaming</Title>
                 </Link>
-                <Utilities>
-                    <TextButton text="Log in" />
+                <Utilities className="utilities">
+                    <TextButton
+                        className="utilities__log-in-button"
+                        text="Log in"
+                    />
                     <TextButton
                         text="Start your free trial"
                         backgroundColor={theme.colors.accent}

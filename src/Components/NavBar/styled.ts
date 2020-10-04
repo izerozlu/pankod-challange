@@ -1,8 +1,5 @@
-// #region Global Imports
 import styled from "styled-components";
-import { TextButton } from "@Components";
 import { InnerContainer } from "@Styled/Shared";
-// #endregion Global Imports
 
 export const Container = styled.nav`
     background-color: ${({ theme }) => theme.colors.primary};
@@ -34,7 +31,7 @@ export const Utilities = styled.div`
     display: flex;
     align-items: center;
 
-    > ${TextButton}:first-child {
+    > .utilities__log-in-button {
         margin-right: 16px;
     }
 `;
