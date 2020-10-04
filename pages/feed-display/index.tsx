@@ -38,7 +38,7 @@ const FeedDisplay: NextPage<
         const queryTestRegExp = new RegExp(query, "i");
         const filteredFeedList = feedList.filter((feed: Feed) => {
             return (
-                feed.releaseYear > 2010 &&
+                feed.releaseYear >= 2010 &&
                 feedDisplay.feedType.includes(feed.programType) &&
                 (query ? queryTestRegExp.test(feed.title) : true)
             );
