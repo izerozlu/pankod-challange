@@ -14,6 +14,10 @@ import Link from "next/link";
 import { Content, Header, InnerContainer, Subheader } from "@Styled/Shared";
 
 const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = () => {
+    /**
+     * Constructs entries for the "Series" and "Movies" categories.
+     * @returns Generated elements' JSX counterparts.
+     */
     const renderNavigationEntries = (): JSX.Element[] => {
         return ["series", "movies"].map((title: string) => (
             <Link href={`/${title}`} key={title}>
