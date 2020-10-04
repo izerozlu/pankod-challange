@@ -40,10 +40,13 @@ export const PosterImage = styled.img`
     @media screen and (max-width: 768px) {
         min-height: 300px;
         width: 200px;
+        background: url("https://via.placeholder.com/200x300?text=Feed+Image");
     }
 
     @media screen and (max-width: 500px) {
+        min-height: 500px;
         width: 80vw;
+        background: url("https://via.placeholder.com/400x600?text=Feed+Image");
     }
 `;
 

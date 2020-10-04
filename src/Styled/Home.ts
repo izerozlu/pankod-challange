@@ -20,12 +20,25 @@ export const NavigationList = styled.ul`
     display: flex;
     width: 100%;
     padding: 0;
+
+    @media screen and (max-width: 600px) {
+        justify-content: space-between;
+    }
+
+    @media screen and (max-width: 400px) {
+        flex-direction: column;
+    }
 `;
 
 export const NavigationEntry = styled.li`
     list-style: none;
     margin-right: 16px;
     cursor: pointer;
+
+    @media screen and (max-width: 600px) {
+        flex-basis: 45%;
+        margin: 0;
+    }
 `;
 
 export const NavigationEntryHeader = styled.h2`
@@ -41,8 +54,17 @@ export const NavigationEntryHeader = styled.h2`
     align-items: center;
     width: 180px;
     text-transform: uppercase;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        height: 320px;
+    }
 `;
 
 export const NavigationEntryContent = styled.p`
     text-transform: capitalize;
+
+    @media screen and (max-width: 600px) {
+        font-size: 24px;
+    }
 `;
