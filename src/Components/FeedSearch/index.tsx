@@ -8,6 +8,10 @@ import { Container, SearchButton, SearchInput } from "./styled";
 export const FeedSearch: React.FunctionComponent<IFeedSearch.IProps> = () => {
     const dispatch = useDispatch();
 
+    /**
+     * Notifies the <i>FeedDisplay</i> store about the user-entered query.
+     * @param event Input event to extract the query value from.
+     */
     const handleInput = (event: FormEvent<HTMLInputElement>) => {
         // @ts-ignore
         const { value } = event.target;
