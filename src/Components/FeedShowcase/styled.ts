@@ -31,6 +31,7 @@ export const PosterImage = styled.img`
     min-height: 210px;
     width: 140px;
     object-fit: cover;
+    background: url("https://via.placeholder.com/140x210?text=Feed+Image");
 
     @media screen and (max-width: 768px) {
         min-height: 300px;
