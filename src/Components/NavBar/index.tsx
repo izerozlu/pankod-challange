@@ -1,6 +1,7 @@
 import React from "react";
 import { theme } from "@Definitions/Styled";
 import { TextButton } from "@Components/TextButton";
+import Link from "next/link";
 import { INavBar } from "./NavBar";
 import { Container, NavBarInnerContainer, Title, Utilities } from "./styled";
 
@@ -8,7 +9,9 @@ export const NavBar: React.FunctionComponent<INavBar.IProps> = () => {
     return (
         <Container>
             <NavBarInnerContainer>
-                <Title>DEMO Streaming</Title>
+                <Link href="/">
+                    <Title>DEMO Streaming</Title>
+                </Link>
                 <Utilities>
                     <TextButton text="Log in" />
                     <TextButton

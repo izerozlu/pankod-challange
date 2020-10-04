@@ -26,6 +26,8 @@ export const NavBarInnerContainer = styled(InnerContainer)`
 export const Title = styled.h1`
     color: white;
     font-weight: bold;
+    margin: 0;
+    cursor: pointer;
 `;
 
 export const Utilities = styled.div`

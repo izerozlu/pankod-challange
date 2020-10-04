@@ -22,7 +22,7 @@ app.prepare().then(() => {
     server.use(express.static(path.join(__dirname, "../public/static")));
     server.use(nextI18NextMiddleware(nextI18next));
 
-    server.get("/feed", async (request, response) => {
+    server.get("/api/feed", async (request, response) => {
         const filePath = path.join(__dirname, "./data/sample.json");
         const file = fs.readFileSync(filePath, { encoding: "utf8" });
         response.send(JSON.parse(file));

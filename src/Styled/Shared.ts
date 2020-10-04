@@ -4,9 +4,9 @@ export const Content = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-basis: 100%;
     width: 100%;
     margin: 0 auto;
+    flex: 1;
 `;
 
 export const InnerContainer = styled.div`

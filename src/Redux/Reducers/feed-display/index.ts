@@ -9,11 +9,11 @@ const INITIAL_STATE: IFeedDisplay.IStateProps = {
     feedList: [],
     filteredFeedList: [],
     hasError: false,
-    feedFetched: false,
     feedNeedsProcessing: false,
     sortType: "title_asc",
     query: "",
     feedType: "series",
+    loading: true,
 };
 
 type IMapPayload = IFeedDisplay.Actions.IMapPayload;
@@ -27,8 +27,8 @@ export const FeedDisplayReducer = (
             return {
                 ...state,
                 ...action.payload,
-                feedFetched: true,
                 feedNeedsProcessing: true,
+                loading: false,
             };
         case ActionConsts.FeedDisplay.AssignFilteredFeedList:
             return {

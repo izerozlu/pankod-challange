@@ -1,11 +1,8 @@
-// #region Global Imports
-import { WithTranslation } from "next-i18next";
 import { Feed } from "@Interfaces/Models/Feed";
 import { SortType } from "../../Types/SortType";
-// #endregion Global Imports
 
 export declare module IFeedDisplay {
-    export interface IProps extends WithTranslation {}
+    export interface IProps {}
 
     export interface InitialProps {}
 
@@ -14,10 +11,10 @@ export declare module IFeedDisplay {
         filteredFeedList: Feed[];
         sortType: SortType;
         feedNeedsProcessing: boolean;
-        feedFetched: boolean;
         hasError: boolean;
         query: string;
         feedType: "series" | "movies";
+        loading: boolean;
     }
 
     module Actions {

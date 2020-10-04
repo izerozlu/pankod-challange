@@ -9,3 +9,8 @@ export const Container = styled.div`
     justify-content: flex-start;
     min-height: 100vh;
 `;
+
+export const AlternativeMessage = styled.p`
+    margin-top: 48px;
+    padding: 0 16px;
+`;
