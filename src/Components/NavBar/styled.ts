@@ -18,6 +18,7 @@ export const NavBarInnerContainer = styled(InnerContainer)`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 `;
 
 export const Title = styled.h1`
@@ -30,8 +31,15 @@ export const Title = styled.h1`
 export const Utilities = styled.div`
     display: flex;
     align-items: center;
+    align-self: flex-end;
 
     > .utilities__log-in-button {
         margin-right: 16px;
+    }
+
+    @media screen and (max-width: 600px) {
+        flex-basis: 100%;
+        justify-content: flex-end;
+        margin-top: 12px;
     }
 `;

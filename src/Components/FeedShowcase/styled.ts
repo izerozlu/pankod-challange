@@ -15,6 +15,10 @@ export const ShowcaseList = styled.ul`
         margin: 0 auto;
         width: 90vw;
     }
+
+    @media screen and (max-width: 600px) {
+        justify-content: center;
+    }
 `;
 
 export const Showcase = styled.li`
@@ -37,6 +41,10 @@ export const PosterImage = styled.img`
         min-height: 300px;
         width: 200px;
     }
+
+    @media screen and (max-width: 500px) {
+        width: 80vw;
+    }
 `;
 
 export const ShowcaseTitle = styled.p`
@@ -49,5 +57,9 @@ export const ShowcaseTitle = styled.p`
 
     @media screen and (max-width: 768px) {
         max-width: 200px;
+    }
+
+    @media screen and (max-width: 500px) {
+        font-size: 24px;
     }
 `;

@@ -9,6 +9,11 @@ export const Container = styled.div`
     box-shadow: ${({ theme }) => theme.boxShadows.medium};
     border-radius: 4px;
     overflow: hidden;
+
+    @media screen and (max-width: 600px) {
+        flex-basis: 100%;
+        margin-bottom: 12px;
+    }
 `;
 
 export const SearchInput = styled.input`
@@ -18,6 +23,10 @@ export const SearchInput = styled.input`
 
     :focus {
         outline: none;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
     }
 `;
 

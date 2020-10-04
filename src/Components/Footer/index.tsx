@@ -69,9 +69,13 @@ const Footer: React.FunctionComponent<IFooter.IProps> = (): JSX.Element => {
                 <Statement>
                     Copyright © 2016 DEMO Streaming. All Rights Reserved.
                 </Statement>
-                <LinkContainer>
-                    <Links>{renderSocialMediaImages()}</Links>
-                    <Links>{renderStoreImages()}</Links>
+                <LinkContainer className="links">
+                    <Links className="links__social-media">
+                        {renderSocialMediaImages()}
+                    </Links>
+                    <Links className="links__store">
+                        {renderStoreImages()}
+                    </Links>
                 </LinkContainer>
             </InnerContainer>
         </Container>

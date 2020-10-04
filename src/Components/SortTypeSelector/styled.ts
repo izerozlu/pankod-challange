@@ -10,6 +10,10 @@ export const Container = styled.div`
     box-shadow: ${({ theme }) => theme.boxShadows.medium};
     position: relative;
     min-width: 240px;
+
+    @media screen and (max-width: 600px) {
+        flex-basis: 100%;
+    }
 `;
 
 export const Selector = styled.select`

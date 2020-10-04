@@ -70,12 +70,17 @@ export const Links = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    &.links__store {
+        margin-top: 12px;
+    }
 `;
 
 export const LinkContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 `;
 
 export const Image = styled.img<{ height?: string; width?: string }>`
