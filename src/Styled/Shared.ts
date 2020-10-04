@@ -26,4 +26,5 @@ export const Header = styled.header`
 
 export const Subheader = styled.h2`
     color: white;
+    text-transform: capitalize;
 `;

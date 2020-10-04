@@ -1,23 +1,23 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IStore } from "@Redux/IStore";
-import { SeriesActions } from "@Actions";
+import { FeedDisplayActions } from "@Actions";
 import { AiFillCaretDown } from "react-icons/ai";
-import Select from "react-select";
+import Select, { ValueType } from "react-select";
 import { ISortTypeSelector } from "./SortTypeSelector";
-import { SortType } from "../../Types/SortType";
 import { Container } from "./styled";
+import { SortSelectOption } from "../../Types/SortSelectOption";
 
 export const SortTypeSelector: React.FunctionComponent<ISortTypeSelector.IProps> = () => {
-    const series = useSelector((state: IStore) => state.series);
+    const feedDisplay = useSelector((state: IStore) => state.feedDisplay);
     const dispatch = useDispatch();
 
-    const defaultOption = {
+    const defaultOption: SortSelectOption = {
         label: "Title | Ascending",
-        value: series.sortType,
+        value: feedDisplay.sortType,
     };
 
-    const selectOptions = [
+    const selectOptions: SortSelectOption[] = [
         {
             label: "Title | Ascending",
             value: "title_asc",
@@ -36,8 +36,11 @@ export const SortTypeSelector: React.FunctionComponent<ISortTypeSelector.IProps>
         },
     ];
 
-    const handleChange = ({ value }: { value: SortType; label: string }) => {
-        dispatch(SeriesActions.AssignSortType(value));
+    const handleChange = (changeEvent?: ValueType<SortSelectOption>) => {
+        if (changeEvent) {
+            // @ts-ignore
+            dispatch(FeedDisplayActions.AssignSortType(changeEvent.value));
+        }
     };
 
     return (

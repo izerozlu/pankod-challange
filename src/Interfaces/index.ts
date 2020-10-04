@@ -2,7 +2,7 @@
 export * from "@Interfaces/Pages/Home";
 export * from "@Interfaces/Pages/App";
 export * from "@Interfaces/Pages/Error";
-export * from "@Interfaces/Pages/Series";
+export * from "@Interfaces/Pages/FeedDisplay";
 // #endregion Page Interfaces
 
 // #region Model Interfaces

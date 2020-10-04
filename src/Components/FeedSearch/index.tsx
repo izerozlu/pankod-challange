@@ -1,4 +1,4 @@
-import { SeriesActions } from "@Actions";
+import { FeedDisplayActions } from "@Actions";
 import React, { FormEvent } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,9 @@ export const FeedSearch: React.FunctionComponent<IFeedSearch.IProps> = () => {
     const handleInput = (event: FormEvent<HTMLInputElement>) => {
         // @ts-ignore
         const { value } = event.target;
-        dispatch(SeriesActions.AssignQuery(value.length >= 3 ? value : ""));
+        dispatch(
+            FeedDisplayActions.AssignQuery(value.length >= 3 ? value : "")
+        );
     };
 
     return (

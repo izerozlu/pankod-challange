@@ -2,10 +2,10 @@
 import React, { useEffect } from "react";
 import { NextPage, NextPageContext } from "next";
 import { useDispatch, useSelector } from "react-redux";
-import { Container } from "@Styled/Series";
-import { Feed, FeedResponse, ISeries } from "@Interfaces";
+import { Container } from "@Styled/FeedDisplay";
+import { Feed, FeedResponse, IFeedDisplay } from "@Interfaces";
 import { IStore } from "@Redux/IStore";
-import { SeriesActions } from "@Actions";
+import { FeedDisplayActions } from "@Actions";
 import { Dispatch } from "redux";
 import {
     FeedSearch,
@@ -15,22 +15,25 @@ import {
     SortTypeSelector,
 } from "@Components";
 import { Content, Header, InnerContainer, Subheader } from "@Styled/Shared";
+import { useRouter } from "next/router";
 import { COULD_NOT_RETRIEVE_FEED } from "../../src/Constants/Errors";
-import { SERIES } from "../../src/Constants/ProgramTypes";
 import { SortType } from "../../src/Types/SortType";
 
-const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
-    const series = useSelector((state: IStore) => state.series);
+const FeedDisplay: NextPage<
+    IFeedDisplay.IProps,
+    IFeedDisplay.InitialProps
+> = () => {
+    const router = useRouter();
+    const feedDisplay = useSelector((state: IStore) => state.feedDisplay);
     const dispatch = useDispatch();
 
     const filterFeed = (feedList: Feed[]): Feed[] => {
-        const { query } = series;
+        const { query } = feedDisplay;
         const queryTestRegExp = new RegExp(query, "i");
-
         const filteredFeedList = feedList.filter((feed: Feed) => {
             return (
                 feed.releaseYear > 2010 &&
-                feed.programType === SERIES &&
+                feedDisplay.feedType.includes(feed.programType) &&
                 (query ? queryTestRegExp.test(feed.title) : true)
             );
         });
@@ -93,16 +96,22 @@ const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
     };
 
     const processFeed = async () => {
-        const { feedList } = series;
-        const filteredList = filterFeed(feedList);
-        const sortedList = sortFeed(filteredList, series.sortType);
-        dispatch(SeriesActions.AssignFilteredFeedList(sortedList));
+        const { feedList } = feedDisplay;
+        const sortedList = sortFeed(feedList, feedDisplay.sortType);
+        const filteredList = filterFeed(sortedList);
+        dispatch(FeedDisplayActions.AssignFilteredFeedList(filteredList));
     };
 
     useEffect(() => {
-        if (!series.feedFetched) {
+        const feedType = router.query?.type as "series" | "movies";
+        dispatch(FeedDisplayActions.AssignFeedType(feedType || "series"));
+        if (!feedDisplay.feedFetched) {
             fetchFeed(dispatch);
-        } else if (series.feedNeedsProcessing) {
+        }
+    }, [dispatch, fetchFeed]);
+
+    useEffect(() => {
+        if (feedDisplay.feedNeedsProcessing) {
             processFeed();
         }
     });
@@ -113,10 +122,10 @@ const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
             <Content>
                 <Header>
                     <InnerContainer>
-                        <Subheader>Popular Series</Subheader>
+                        <Subheader>popular {feedDisplay.feedType}</Subheader>
                     </InnerContainer>
                 </Header>
-                <InnerContainer className="series-filters">
+                <InnerContainer className="feed-display-filters">
                     <FeedSearch />
                     <SortTypeSelector />
                 </InnerContainer>
@@ -127,10 +136,10 @@ const Series: NextPage<ISeries.IProps, ISeries.InitialProps> = () => {
     );
 };
 
-Series.getInitialProps = async ({
+FeedDisplay.getInitialProps = async ({
     // @ts-ignore
     store,
-}: NextPageContext): Promise<ISeries.InitialProps> => {
+}: NextPageContext): Promise<IFeedDisplay.InitialProps> => {
     await fetchFeed(store.dispatch);
     return {};
 };
@@ -146,10 +155,10 @@ const fetchFeed = async (dispatch: Dispatch) => {
                 throw new Error(COULD_NOT_RETRIEVE_FEED);
             }
         );
-        dispatch(SeriesActions.AssignFeedList(result.entries));
+        dispatch(FeedDisplayActions.AssignFeedList(result.entries));
     } catch (e) {
-        dispatch(SeriesActions.SetError());
+        dispatch(FeedDisplayActions.SetError());
     }
 };
 
-export default Series;
+export default FeedDisplay;

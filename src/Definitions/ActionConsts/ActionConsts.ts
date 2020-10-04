@@ -3,11 +3,12 @@ export const ActionConsts = {
         AssignFeed: "FeedShowcase_AssignFeed",
     },
 
-    Series: {
-        SetError: "Series_SetError",
-        AssignQuery: "Series_AssignQuery",
-        AssignFeedList: "Series_AssignFeedList",
-        AssignFilteredFeedList: "Series_AssignFilteredFeedList",
-        AssignSortType: "Series_AssignSortType",
+    FeedDisplay: {
+        SetError: "FeedDisplay_SetError",
+        AssignQuery: "FeedDisplay_AssignQuery",
+        AssignFeedList: "FeedDisplay_AssignFeedList",
+        AssignFilteredFeedList: "FeedDisplay_AssignFilteredFeedList",
+        AssignSortType: "FeedDisplay_AssignSortType",
+        AssignFeedType: "FeedDisplay_AssignFeedType",
     },
 };

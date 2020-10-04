@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { SeriesReducer } from "./series";
+import { FeedDisplayReducer } from "./feed-display";
 
 export default combineReducers({
-    series: SeriesReducer,
+    feedDisplay: FeedDisplayReducer,
 });

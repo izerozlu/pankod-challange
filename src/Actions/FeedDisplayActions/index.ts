@@ -4,24 +4,28 @@ import { Feed } from "@Interfaces";
 import { SortType } from "../../Types/SortType";
 // #endregion Local Imports
 
-export const SeriesActions = {
+export const FeedDisplayActions = {
     AssignFeedList: (feedList: Feed[]) => ({
-        type: ActionConsts.Series.AssignFeedList,
+        type: ActionConsts.FeedDisplay.AssignFeedList,
         payload: { feedList },
     }),
     AssignFilteredFeedList: (filteredFeedList: Feed[]) => ({
-        type: ActionConsts.Series.AssignFilteredFeedList,
+        type: ActionConsts.FeedDisplay.AssignFilteredFeedList,
         payload: { filteredFeedList },
     }),
     AssignSortType: (sortType: SortType) => ({
-        type: ActionConsts.Series.AssignSortType,
+        type: ActionConsts.FeedDisplay.AssignSortType,
         payload: { sortType },
     }),
     AssignQuery: (query: string) => ({
-        type: ActionConsts.Series.AssignQuery,
+        type: ActionConsts.FeedDisplay.AssignQuery,
         payload: { query },
     }),
+    AssignFeedType: (feedType: "series" | "movies") => ({
+        type: ActionConsts.FeedDisplay.AssignFeedType,
+        payload: { feedType },
+    }),
     SetError: () => ({
-        type: ActionConsts.Series.SetError,
+        type: ActionConsts.FeedDisplay.SetError,
     }),
 };

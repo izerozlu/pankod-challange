@@ -13,10 +13,10 @@ import {
 } from "./styled";
 
 export const FeedShowcase: React.FunctionComponent<IFeedShowcase.IProps> = () => {
-    const series = useSelector((state: IStore) => state.series);
+    const feedDisplay = useSelector((state: IStore) => state.feedDisplay);
 
     const renderShowcases = (): JSX.Element[] => {
-        return series.filteredFeedList?.map((feed: Feed) => {
+        return feedDisplay.filteredFeedList?.map((feed: Feed) => {
             return (
                 <Showcase key={feed.title}>
                     <PosterImage

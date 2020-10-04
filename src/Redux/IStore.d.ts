@@ -1,9 +1,9 @@
 // #region Interface Imports
-import { IHomePage, ISeries } from "@Interfaces";
+import { IHomePage, IFeedDisplay } from "@Interfaces";
 
 // #endregion Interface Imports
 
 export interface IStore {
-    series: ISeries.IStateProps;
+    feedDisplay: IFeedDisplay.IStateProps;
     home: IHomePage.IStateProps;
 }

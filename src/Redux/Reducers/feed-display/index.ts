@@ -2,10 +2,10 @@
 import { ActionConsts } from "@Definitions";
 // #endregion Local Imports
 // #region Interface Imports
-import { IAction, ISeries } from "@Interfaces";
+import { IAction, IFeedDisplay } from "@Interfaces";
 // #endregion Interface Imports
 
-const INITIAL_STATE: ISeries.IStateProps = {
+const INITIAL_STATE: IFeedDisplay.IStateProps = {
     feedList: [],
     filteredFeedList: [],
     hasError: false,
@@ -13,45 +13,51 @@ const INITIAL_STATE: ISeries.IStateProps = {
     feedNeedsProcessing: false,
     sortType: "title_asc",
     query: "",
+    feedType: "series",
 };
 
-type IMapPayload = ISeries.Actions.IMapPayload;
+type IMapPayload = IFeedDisplay.Actions.IMapPayload;
 
-export const SeriesReducer = (
+export const FeedDisplayReducer = (
     state = INITIAL_STATE,
     action: IAction<IMapPayload>
 ) => {
     switch (action.type) {
-        case ActionConsts.Series.AssignFeedList:
+        case ActionConsts.FeedDisplay.AssignFeedList:
             return {
                 ...state,
                 ...action.payload,
                 feedFetched: true,
                 feedNeedsProcessing: true,
             };
-        case ActionConsts.Series.AssignFilteredFeedList:
+        case ActionConsts.FeedDisplay.AssignFilteredFeedList:
             return {
                 ...state,
                 ...action.payload,
                 feedNeedsProcessing: false,
             };
-        case ActionConsts.Series.SetError:
+        case ActionConsts.FeedDisplay.SetError:
             return {
                 ...state,
                 feedList: [],
                 hasError: true,
             };
-        case ActionConsts.Series.AssignSortType:
+        case ActionConsts.FeedDisplay.AssignSortType:
             return {
                 ...state,
                 ...action.payload,
                 feedNeedsProcessing: true,
             };
-        case ActionConsts.Series.AssignQuery:
+        case ActionConsts.FeedDisplay.AssignQuery:
             return {
                 ...state,
                 ...action.payload,
                 feedNeedsProcessing: true,
+            };
+        case ActionConsts.FeedDisplay.AssignFeedType:
+            return {
+                ...state,
+                ...action.payload,
             };
 
         default:

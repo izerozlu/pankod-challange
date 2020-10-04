@@ -4,7 +4,7 @@ import { Feed } from "@Interfaces/Models/Feed";
 import { SortType } from "../../Types/SortType";
 // #endregion Global Imports
 
-export declare module ISeries {
+export declare module IFeedDisplay {
     export interface IProps extends WithTranslation {}
 
     export interface InitialProps {}
@@ -17,6 +17,7 @@ export declare module ISeries {
         feedFetched: boolean;
         hasError: boolean;
         query: string;
+        feedType: "series" | "movies";
     }
 
     module Actions {
