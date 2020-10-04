@@ -15,6 +15,11 @@ import {
 export const FeedShowcase: React.FunctionComponent<IFeedShowcase.IProps> = () => {
     const feedDisplay = useSelector((state: IStore) => state.feedDisplay);
 
+    /**
+     * Constructs the JSX counterparts of the feeds from the
+     * <code>filteredFeedList<code>.
+     * @returns JSX counterparts.
+     */
     const renderShowcases = (): JSX.Element[] => {
         return feedDisplay.filteredFeedList?.map((feed: Feed) => {
             return (

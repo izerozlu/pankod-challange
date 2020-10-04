@@ -24,7 +24,7 @@ const FeedDisplay: NextPage<
     IFeedDisplay.IProps,
     IFeedDisplay.InitialProps
 > = () => {
-    const feedDisplayStore = useSelector((state: IStore) => state.feedDisplay);
+    const feedDisplay = useSelector((state: IStore) => state.feedDisplay);
     const dispatch = useDispatch();
 
     /**
@@ -34,12 +34,12 @@ const FeedDisplay: NextPage<
      * @returns Filtered list.
      */
     const filterFeed = (feedList: Feed[]): Feed[] => {
-        const { query } = feedDisplayStore;
+        const { query } = feedDisplay;
         const queryTestRegExp = new RegExp(query, "i");
         const filteredFeedList = feedList.filter((feed: Feed) => {
             return (
                 feed.releaseYear > 2010 &&
-                feedDisplayStore.feedType.includes(feed.programType) &&
+                feedDisplay.feedType.includes(feed.programType) &&
                 (query ? queryTestRegExp.test(feed.title) : true)
             );
         });
@@ -132,8 +132,8 @@ const FeedDisplay: NextPage<
      * Sorts and filters the <code>feedList</code> from the component's store.
      */
     const processFeed = async (): Promise<void> => {
-        const { feedList } = feedDisplayStore;
-        const sortedList = sortFeed(feedList, feedDisplayStore.sortType);
+        const { feedList } = feedDisplay;
+        const sortedList = sortFeed(feedList, feedDisplay.sortType);
         const filteredList = filterFeed(sortedList);
         dispatch(FeedDisplayActions.AssignFilteredFeedList(filteredList));
     };
@@ -147,11 +147,11 @@ const FeedDisplay: NextPage<
      * @returns Content to be displayed.
      */
     const renderContent = (): JSX.Element => {
-        if (feedDisplayStore.hasError || feedDisplayStore.loading) {
+        if (feedDisplay.hasError || feedDisplay.loading) {
             return (
                 <InnerContainer>
                     <AlternativeMessage>
-                        {feedDisplayStore.hasError
+                        {feedDisplay.hasError
                             ? "Oops, something went wrong.."
                             : "Loading..."}
                     </AlternativeMessage>
@@ -173,7 +173,7 @@ const FeedDisplay: NextPage<
 
     // This useEffect hook is used for state update digestions.
     useEffect(() => {
-        if (feedDisplayStore.feedNeedsProcessing) {
+        if (feedDisplay.feedNeedsProcessing) {
             processFeed();
         }
     });
@@ -184,9 +184,7 @@ const FeedDisplay: NextPage<
             <Content>
                 <Header>
                     <InnerContainer>
-                        <Subheader>
-                            popular {feedDisplayStore.feedType}
-                        </Subheader>
+                        <Subheader>popular {feedDisplay.feedType}</Subheader>
                     </InnerContainer>
                 </Header>
                 {renderContent()}
