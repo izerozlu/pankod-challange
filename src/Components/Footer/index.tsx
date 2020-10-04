@@ -13,7 +13,11 @@ import { InnerContainer } from "@Styled/Shared";
 import { IFooter } from "./Footer";
 
 const Footer: React.FunctionComponent<IFooter.IProps> = (): JSX.Element => {
-    const renderMapItems = (): JSX.Element[] => {
+    /**
+     * Constructs the JSX counterparts of the site map entries.
+     * @returns JSX counterparts.
+     */
+    const renderSiteMapItems = (): JSX.Element[] => {
         return [
             "Home",
             "Terms and Conditions",
@@ -32,6 +36,10 @@ const Footer: React.FunctionComponent<IFooter.IProps> = (): JSX.Element => {
         });
     };
 
+    /**
+     * Constructs the JSX counterparts of the social media links.
+     * @returns JSX counterparts.
+     */
     const renderSocialMediaImages = (): JSX.Element[] => {
         return [
             "static/images/social-media/facebook-white.svg",
@@ -40,6 +48,10 @@ const Footer: React.FunctionComponent<IFooter.IProps> = (): JSX.Element => {
         ].map((source: string) => <Image src={source} key={source} />);
     };
 
+    /**
+     * Constructs the JSX counterparts of the mobile application links.
+     * @returns JSX counterparts.
+     */
     const renderStoreImages = (): JSX.Element[] => {
         return [
             "static/images/store/app-store.svg",
@@ -53,7 +65,7 @@ const Footer: React.FunctionComponent<IFooter.IProps> = (): JSX.Element => {
     return (
         <Container>
             <InnerContainer>
-                <SiteMap>{renderMapItems()}</SiteMap>
+                <SiteMap>{renderSiteMapItems()}</SiteMap>
                 <Statement>
                     Copyright © 2016 DEMO Streaming. All Rights Reserved.
                 </Statement>
