@@ -2,8 +2,7 @@
 
 This repository contains the implementation for [Pankod Challenge](https://github.com/pankod/frontend-challenge).
 
-Uses the guidance from [Pankod Next Boilerplate](https://github.com/pankod/next-boilerplate). Unrelated folders and files removed for the sake of simplicity. `npm` scripts are untouched.
-
+Uses the guidance from [Pankod Next Boilerplate](https://github.com/pankod/next-boilerplate). Unrelated folders and files removed for the sake of simplicity.
 ### About
 
 Uses two pages. These are `Home` and `FeedDisplay`.
